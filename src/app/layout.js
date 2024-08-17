@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import AuthChecker from "./hooks/checkAuth";
 import ReactQueryProvider from "@/middleware/reactQuery";
+import BasedLayout from "@/component/layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,14 +11,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
-      <body className={`${inter.className} px-24 py-5`}>
+      <body className={`${inter.className}`}>
         <ReactQueryProvider>
-          <AuthChecker>
-            {children}
-          </AuthChecker>
+          <BasedLayout>{children}</BasedLayout>
         </ReactQueryProvider>
       </body>
     </html>
